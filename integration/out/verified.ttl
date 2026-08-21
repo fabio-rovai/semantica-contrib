@@ -1,0 +1,13 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix semantica: <https://semantica.dev/ns#> .
+
+<Acme Corp> a <ORG> ;
+    semantica:text "" ;
+    semantica:confidence 0.91 .
+
+<Jane Doe> a <PERSON> ;
+    semantica:text "" ;
+    semantica:confidence 0.88 .
+
+<Jane Doe> <works_for> <Acme Corp> .

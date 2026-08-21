@@ -1,0 +1,27 @@
+{
+  "@context": {
+    "@vocab": "https://semantica.dev/vocab/",
+    "semantica": "https://semantica.dev/ns#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://example.org/e1",
+      "@type": "https://example.org/Org",
+      "semantica:text": "Acme Corp",
+      "semantica:confidence": 0.91
+    },
+    {
+      "@id": "semantica:rel/_",
+      "@type": "semantica:Relationship",
+      "semantica:source": {
+        "@id": "https://example.org/e1"
+      },
+      "semantica:target": {
+        "@id": "https://example.org/e2"
+      },
+      "semantica:type": "https://example.org/knows"
+    }
+  ]
+}

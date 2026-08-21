@@ -1,0 +1,2 @@
+@prefix ex: <https://semantica.dev/shapes/> .
+<https://example.org/p1> a ex:Person .

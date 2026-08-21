@@ -1,0 +1,33 @@
+{
+  "@context": {
+    "@vocab": "https://semantica.dev/vocab/",
+    "semantica": "https://semantica.dev/ns#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "@graph": [
+    {
+      "@id": "Acme Corp",
+      "@type": "ORG",
+      "semantica:text": "",
+      "semantica:confidence": 0.91
+    },
+    {
+      "@id": "Jane Doe",
+      "@type": "PERSON",
+      "semantica:text": "",
+      "semantica:confidence": 0.88
+    },
+    {
+      "@id": "semantica:rel/_",
+      "@type": "semantica:Relationship",
+      "semantica:source": {
+        "@id": "Jane Doe"
+      },
+      "semantica:target": {
+        "@id": "Acme Corp"
+      },
+      "semantica:type": "works_for"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+<https://example.org/e1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/Org> .
+<https://example.org/e1> <https://semantica.dev/ns#text> "Acme Corp" .
+<https://example.org/e1> <https://semantica.dev/ns#confidence> "0.91"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://example.org/e1> <https://example.org/knows> <https://example.org/e2> .

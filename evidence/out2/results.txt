@@ -1,0 +1,5 @@
+🔄 Semantica is generating: Building SHACL index 📚 ontology SHACLGenerator |░░░░░░░░░░░░░░░| 0.0% ETA: - Rate: - Time: 0.00s Extracted: -[shacl] wrote []
+🔄 Semantica is exporting: Exporting ontology to owl-xml: out2/onto.owl 💾 export OWLExporter |░░░░░░░░░░░░░░░| 0.0% ETA: - Rate: - Time: 0.00s Extracted: -[owl:owl-xml] ok
+[owl:turtle] ok
+[formats] written
+[temporal] written

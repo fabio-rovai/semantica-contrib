@@ -1,0 +1,9 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix semantica: <https://semantica.dev/ns#> .
+
+<https://example.org/e1> a <https://example.org/Org> ;
+    semantica:text "Acme Corp" ;
+    semantica:confidence 0.91 .
+
+<https://example.org/e1> <https://example.org/knows> <https://example.org/e2> .

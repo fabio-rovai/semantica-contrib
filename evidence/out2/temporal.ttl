@@ -1,0 +1,19 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix semantica: <https://semantica.dev/ns#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+
+<https://example.org/e1> a <https://example.org/Org> ;
+    semantica:text "A" ;
+    semantica:confidence 1.0 .
+
+<https://example.org/e1> <https://example.org/worksFor> <https://example.org/e2> .
+
+<semantica:rel_0_0> time:hasTime <semantica:rel_0_0__valid_interval> .
+<semantica:rel_0_0__valid_interval> a time:Interval ;
+    time:hasBeginning <semantica:rel_0_0__valid_begin> ;
+    time:hasEnd <semantica:rel_0_0__valid_end> .
+<semantica:rel_0_0__valid_end> a time:Instant ;
+    time:inXSDDateTimeStamp "2023-06-30"^^xsd:dateTimeStamp .
+<semantica:rel_0_0__valid_begin> a time:Instant ;
+    time:inXSDDateTimeStamp "2020-01-01"^^xsd:dateTimeStamp .

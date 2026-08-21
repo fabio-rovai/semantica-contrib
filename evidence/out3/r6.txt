@@ -1,0 +1,14 @@
+forward_chain sig: (self) -> List[semantica.reasoning.reasoner.InferenceResult]
+add_rule sig: (self, rule_def: Union[str, semantica.reasoning.reasoner.Rule]) -> semantica.reasoning.reasoner.Rule
+add_fact sig: (self, fact: Union[str, Dict[str, Any]]) -> None
+infer_facts sig: (self, facts: Union[List[Any], Dict[str, Any]], rules: Optional[List[Union[str, semantica.reasoning.reasoner.Rule]]] = None) -> List[Any]
+GraphReasoner.reason sig: (self, graph: Dict[str, Any], query: str, **options) -> str
+Reason over the provided knowledge graph to answer a query.
+
+Args:
+    graph: The knowledge graph dictionary (entities, relationships).
+    query: The natural language query.
+    **options: Additional reasoning options.
+
+Returns:
+    str: The reasoning result/answer.

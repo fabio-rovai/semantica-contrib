@@ -1,0 +1,3 @@
+@prefix ont: <https://semantica.dev/ns#> .
+# an instance exported under the ontology namespace, missing the required fullName
+<https://example.org/p1> a ont:Person .

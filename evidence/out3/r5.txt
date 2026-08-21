@@ -1,0 +1,15 @@
+WROTE 755 chars
+@prefix ex: <https://semantica.dev/ns#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:e1 a prov:Entity ;
+    prov:generatedAtTime "2026-08-19T10:57:44.722419"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:semantica_extractor ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:extract_1 ;
+            prov:atTime "2026-08-19T10:57:44.722419"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:semantica_extractor ;
+    prov

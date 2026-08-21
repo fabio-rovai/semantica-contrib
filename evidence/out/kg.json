@@ -1,0 +1,31 @@
+{
+  "entities": [
+    {
+      "id": "Acme Corp",
+      "name": "Acme Corp",
+      "type": "ORG",
+      "confidence": 0.91
+    },
+    {
+      "id": "Jane Doe",
+      "name": "Jane Doe",
+      "type": "PERSON",
+      "confidence": 0.88
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Jane Doe",
+      "target": "Acme Corp",
+      "type": "works_for",
+      "confidence": 0.8
+    }
+  ],
+  "metadata": {
+    "num_entities": 2,
+    "num_relationships": 1,
+    "temporal_enabled": false,
+    "timestamp": "2026-08-19T11:26:13.183667",
+    "entity_resolution_applied": false
+  }
+}

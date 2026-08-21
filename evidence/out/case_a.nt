@@ -1,0 +1,5 @@
+<https://semantica.dev/ns#Acme Corp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://semantica.dev/ns#ORG> .
+<https://semantica.dev/ns#Acme Corp> <https://semantica.dev/ns#confidence> "0.91"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://semantica.dev/ns#Jane Doe> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://semantica.dev/ns#PERSON> .
+<https://semantica.dev/ns#Jane Doe> <https://semantica.dev/ns#confidence> "0.88"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://semantica.dev/ns#Jane Doe> <https://semantica.dev/ns#works_for> <https://semantica.dev/ns#Acme Corp> .

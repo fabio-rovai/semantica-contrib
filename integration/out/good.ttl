@@ -1,0 +1,13 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix semantica: <https://semantica.dev/ns#> .
+
+<http://example.org/i/acme> a <http://example.org/onto#Organization> ;
+    semantica:text "Acme Corp" ;
+    semantica:confidence 0.91 .
+
+<http://example.org/i/jane> a <http://example.org/onto#Person> ;
+    semantica:text "Jane Doe" ;
+    semantica:confidence 0.88 .
+
+<http://example.org/i/jane> <http://example.org/onto#worksFor> <http://example.org/i/acme> .

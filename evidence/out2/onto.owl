@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="https://semantica.dev/ns#">
+    <rdfs:label>SemanticaOntology</rdfs:label>
+    <owl:versionInfo>1.0</owl:versionInfo>
+  </owl:Ontology>
+
+  <owl:Class rdf:about="">
+    <rdfs:label>Person</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="">
+    <rdfs:label>Organization</rdfs:label>
+  </owl:Class>
+
+</rdf:RDF>

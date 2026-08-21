@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "sh": "http://www.w3.org/ns/shacl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "ex": "https://semantica.dev/shapes/",
+    "@vocab": "https://semantica.dev/shapes/"
+  },
+  "@graph": [
+    {
+      "@id": "https://semantica.dev/shapes/shapes",
+      "@type": "owl:Ontology"
+    },
+    {
+      "@id": "https://semantica.dev/shapes/PersonShape",
+      "@type": "sh:NodeShape",
+      "sh:targetClass": {
+        "@id": "https://semantica.dev/shapes/Person"
+      },
+      "sh:name": "Person",
+      "sh:property": [
+        {
+          "sh:path": {
+            "@id": "https://semantica.dev/shapes/fullName"
+          },
+          "sh:datatype": {
+            "@id": "http://www.w3.org/2001/XMLSchema#string"
+          },
+          "sh:minCount": 1,
+          "sh:severity": {
+            "@id": "sh:Violation"
+          }
+        },
+        {
+          "sh:path": {
+            "@id": "https://semantica.dev/shapes/taxIdentifier"
+          },
+          "sh:datatype": {
+            "@id": "http://www.w3.org/2001/XMLSchema#string"
+          },
+          "sh:minCount": 1,
+          "sh:severity": {
+            "@id": "sh:Violation"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://semantica.dev/shapes/OrganizationShape",
+      "@type": "sh:NodeShape",
+      "sh:targetClass": {
+        "@id": "https://semantica.dev/shapes/Organization"
+      },
+      "sh:name": "Organization",
+      "sh:property": [
+        {
+          "sh:path": {
+            "@id": "https://semantica.dev/shapes/foundedOn"
+          },
+          "sh:datatype": {
+            "@id": "http://www.w3.org/2001/XMLSchema#date"
+          },
+          "sh:severity": {
+            "@id": "sh:Violation"
+          }
+        },
+        {
+          "sh:path": {
+            "@id": "https://semantica.dev/shapes/taxIdentifier"
+          },
+          "sh:datatype": {
+            "@id": "http://www.w3.org/2001/XMLSchema#string"
+          },
+          "sh:minCount": 1,
+          "sh:severity": {
+            "@id": "sh:Violation"
+          }
+        }
+      ]
+    }
+  ]
+}

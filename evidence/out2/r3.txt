@@ -1,0 +1,3 @@
+🔄 Semantica is generating: Building SHACL index 📚 ontology SHACLGenerator |░░░░░░░░░░░░░░░| 0.0% ETA: - Rate: - Time: 0.00s Extracted: -OK shapes.ttl
+OK shapes.nt
+OK shapes.jsonld

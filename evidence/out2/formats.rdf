@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:semantica="https://semantica.dev/ns#">
+
+  <rdf:Description rdf:about="https://example.org/e1">
+    <rdf:type rdf:resource="https://example.org/Org"/>
+    <semantica:text>Acme Corp</semantica:text>
+    <semantica:confidence>0.91</semantica:confidence>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://example.org/e1">
+    <https://example.org/knows rdf:resource="https://example.org/e2"/>
+  </rdf:Description>
+
+</rdf:RDF>
