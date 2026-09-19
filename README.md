@@ -7,9 +7,11 @@ suite will catch, because the pipeline never reads its own output back.
 This repository is the harness I used to check one such pipeline, and the
 record of what it found. The subject is
 [Semantica](https://github.com/semantica-agi/semantica), an MIT-licensed
-Python pipeline with about 9,300 stars, tested at 0.6.5 and 0.6.6. Seventeen
-issues came out of it. Four of the fixes are merged upstream; six pull
-requests are open as of 21 August 2026.
+Python pipeline with about 9,300 stars, tested at 0.6.5 and 0.6.6.
+Seventeen issues came out of it, and as of 19 September 2026 all seventeen
+are fixed and closed upstream. Twelve were closed by ten pull requests from
+this work; the other five were fixed by other contributors, which is the
+outcome a filed issue is supposed to have.
 
 Semantica was chosen because it is good enough to be worth checking. It ships
 an MCP server, four triplestore backends, and a PROV-O export that turned out
@@ -30,6 +32,15 @@ interesting is happening. Given `<Acme Corp>` as a subject, rdflib resolves it
 against the current working directory, emits a `file:///` IRI, and warns.
 Oxigraph rejects it: `Invalid IRI code point ' '`. One reader gives you a
 graph you did not write. The other tells you that you wrote nothing.
+
+That subject is no longer what Semantica emits. #1099 is fixed, and on 0.7.0
+a bare entity id is percent-encoded into the declared namespace, giving
+`<https://semantica.dev/ns#Acme%20Corp>`, which both readers accept. The
+divergence itself survives on a different fixture: an id that already looks
+like an absolute IRI is still written through without validation, so an id of
+`http://example.com/##` is emitted verbatim, rdflib returns three triples with
+that malformed subject, and Oxigraph refuses the file with `Invalid IRI code
+point '#'`.
 
 The same divergence showed up again in a second form. A JSON-LD export with a
 top-level `@id` beside a top-level `@graph` puts every member of that graph
@@ -53,23 +64,23 @@ forever.
 
 | Issue | Defect | Status |
 |---|---|---|
-| [#1097](https://github.com/semantica-agi/semantica/issues/1097) | `convert_kg_to_rdf` defined and never called: every entity exports `semantica:text ""` | open, assigned |
-| [#1098](https://github.com/semantica-agi/semantica/issues/1098) | Literals interpolated unescaped: a quote or newline gives invalid Turtle | open, assigned |
-| [#1099](https://github.com/semantica-agi/semantica/issues/1099) | Ids and types written into `<>` unvalidated: `GraphBuilder`'s own defaults emit `<Acme Corp> a <ORG>` | open, assigned |
-| [#1100](https://github.com/semantica-agi/semantica/issues/1100) | Turtle and N-Triples of one graph are different graphs | PR [#1125](https://github.com/semantica-agi/semantica/pull/1125) |
+| [#1097](https://github.com/semantica-agi/semantica/issues/1097) | `convert_kg_to_rdf` defined and never called: every entity exports `semantica:text ""` | fixed, [#1113](https://github.com/semantica-agi/semantica/pull/1113) |
+| [#1098](https://github.com/semantica-agi/semantica/issues/1098) | Literals interpolated unescaped: a quote or newline gives invalid Turtle | fixed, [#1148](https://github.com/semantica-agi/semantica/pull/1148) |
+| [#1099](https://github.com/semantica-agi/semantica/issues/1099) | Ids and types written into `<>` unvalidated: `GraphBuilder`'s own defaults emitted `<Acme Corp> a <ORG>` | fixed, [#1112](https://github.com/semantica-agi/semantica/pull/1112) |
+| [#1100](https://github.com/semantica-agi/semantica/issues/1100) | Turtle and N-Triples of one graph are different graphs | fixed, [#1125](https://github.com/semantica-agi/semantica/pull/1125) |
 | [#1101](https://github.com/semantica-agi/semantica/issues/1101) | Missing-id fallback used `hash()`, so IRIs changed between processes | fixed, [#1109](https://github.com/semantica-agi/semantica/pull/1109) + [#1120](https://github.com/semantica-agi/semantica/pull/1120) |
-| [#1102](https://github.com/semantica-agi/semantica/issues/1102) | `confidence` unchecked: a string value emits `semantica:confidence high .` | PR [#1125](https://github.com/semantica-agi/semantica/pull/1125) |
+| [#1102](https://github.com/semantica-agi/semantica/issues/1102) | `confidence` unchecked: a string value emits `semantica:confidence high .` | fixed, [#1125](https://github.com/semantica-agi/semantica/pull/1125) |
 | [#1103](https://github.com/semantica-agi/semantica/issues/1103) | `OWLExporter` and `OntologyGenerator` disagree on the dict schema: every class `<>`, all properties dropped | fixed, [#1123](https://github.com/semantica-agi/semantica/pull/1123) |
-| [#1104](https://github.com/semantica-agi/semantica/issues/1104) | SHACL targets `/shapes/` while data uses `/ns#`; pySHACL reports conforms | PR [#1124](https://github.com/semantica-agi/semantica/pull/1124) |
-| [#1105](https://github.com/semantica-agi/semantica/issues/1105) | Domain-less property attached to every node shape | PR [#1124](https://github.com/semantica-agi/semantica/pull/1124) |
-| [#1106](https://github.com/semantica-agi/semantica/issues/1106) | OWL-Time interval hangs off an identifier with no inbound arcs | PR [#1126](https://github.com/semantica-agi/semantica/pull/1126) |
+| [#1104](https://github.com/semantica-agi/semantica/issues/1104) | SHACL targets `/shapes/` while data uses `/ns#`; pySHACL reports conforms | fixed, [#1124](https://github.com/semantica-agi/semantica/pull/1124) |
+| [#1105](https://github.com/semantica-agi/semantica/issues/1105) | Domain-less property attached to every node shape | fixed, [#1124](https://github.com/semantica-agi/semantica/pull/1124) |
+| [#1106](https://github.com/semantica-agi/semantica/issues/1106) | OWL-Time interval hangs off an identifier with no inbound arcs | fixed, [#1126](https://github.com/semantica-agi/semantica/pull/1126) |
 | [#1107](https://github.com/semantica-agi/semantica/issues/1107) | The namespace every export mints into returns 404, and no vocabulary shipped | fixed, [#1109](https://github.com/semantica-agi/semantica/pull/1109) |
-| [#1108](https://github.com/semantica-agi/semantica/issues/1108) | `method_registry` swallows exceptions, so a registered gate cannot refuse | PR [#1127](https://github.com/semantica-agi/semantica/pull/1127) |
+| [#1108](https://github.com/semantica-agi/semantica/issues/1108) | `method_registry` swallows exceptions, so a registered gate cannot refuse | fixed, [#1127](https://github.com/semantica-agi/semantica/pull/1127) |
 | [#1114](https://github.com/semantica-agi/semantica/issues/1114) | 106 naive `datetime.now()` against 70 `datetime.utcnow()`, indistinguishable once in RDF | fixed, [#1121](https://github.com/semantica-agi/semantica/pull/1121) |
-| [#1144](https://github.com/semantica-agi/semantica/issues/1144) | Every JSON-LD export hides its payload in a named graph | PR [#1145](https://github.com/semantica-agi/semantica/pull/1145) |
-| [#1146](https://github.com/semantica-agi/semantica/issues/1146) | `@vocab` points at a 404 that is not the shipped namespace | open, modelling call |
-| [#1147](https://github.com/semantica-agi/semantica/issues/1147) | The document IRI is minted from the wall clock, so re-export is not idempotent | fix held behind #1145 |
-| [#1154](https://github.com/semantica-agi/semantica/issues/1154) | No serializer reads `metadata`: an entity keeps its confidence and loses its provenance | PR [#1165](https://github.com/semantica-agi/semantica/pull/1165) |
+| [#1144](https://github.com/semantica-agi/semantica/issues/1144) | Every JSON-LD export hides its payload in a named graph | fixed, [#1145](https://github.com/semantica-agi/semantica/pull/1145) |
+| [#1146](https://github.com/semantica-agi/semantica/issues/1146) | `@vocab` points at a 404 that is not the shipped namespace | fixed, [#1236](https://github.com/semantica-agi/semantica/pull/1236) |
+| [#1147](https://github.com/semantica-agi/semantica/issues/1147) | The document IRI is minted from the wall clock, so re-export is not idempotent | fixed, [#1181](https://github.com/semantica-agi/semantica/pull/1181) |
+| [#1154](https://github.com/semantica-agi/semantica/issues/1154) | No serializer reads `metadata`: an entity keeps its confidence and loses its provenance | fixed, [#1165](https://github.com/semantica-agi/semantica/pull/1165) |
 
 The timestamp one is worth spelling out, because it is the defect with the
 worst failure mode and the least visible symptom. Semantica wrote every
